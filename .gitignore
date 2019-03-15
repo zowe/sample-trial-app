@@ -1,3 +1,5 @@
 node_modules/
 lib
 web
+.nyc_output/
+coverage/
