@@ -29,8 +29,10 @@ class App extends React.Component {
   };
 
   getDefaultState() {
+    const destination = ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "");
+    console.log(destination);
     return {
-      destination: ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "")
+      destination
     };
   }
 

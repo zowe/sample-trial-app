@@ -30,8 +30,6 @@
     
 1) Build React App - this will create folder sample-trial-app/web   
 
-   // TODO: change this  
-   Change value of BASE_URL in file webClient/src/utils.js to point to your mainframe-ip
    ```
     cd sample-trial-app/webClient
     npm install
@@ -43,7 +41,7 @@
 
 2) Go to your zowe installation folder
     ```
-    cd cd /u/zowe/ibmuser/1.0.0/
+    cd /u/zowe/ibmuser/1.0.0/
     mkdir sample-trial-app
     ```
 
@@ -62,3 +60,6 @@ Replace `ibmuser@my.mainframe.com` with your username and mainframe-ip
     scp org.zowe.zlux.sample.trialapp.json ibmuser@my.mainframe.com:/u/zowe/ibmuser/1.0.0/zlux-app-server/plugins
 
     ```
+
+4) Restart ZOWE  
+Please restart Zowe, after all the files are transferred/deployed    
