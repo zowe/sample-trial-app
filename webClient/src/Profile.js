@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Card, ListGroup, Col } from "react-bootstrap"
 
 class Profile extends Component {
     constructor(props) {
@@ -64,15 +65,20 @@ class Profile extends Component {
             const { name: { first, last }, address, email } = ainfo;
             return (<section className="details-section">
                 <h1>Profile</h1>
-                <div><b>Name:</b>
-                    {first}  {last}
-                </div>
-                <div>
-                    <b>Email:</b>{email}
-                </div>
-                <div>
-                    <b>Address:</b>{address}
-                </div>
+                <Card>
+                    <ListGroup variant="flush">
+                        <ListGroup.Item>
+                            <Col>Name:</Col>
+                            <Col><b>{first}  {last}</b></Col>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Col>Email</Col><Col><b>{email}</b></Col>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Col>Address</Col><Col><b>{address}</b></Col>                        </ListGroup.Item>
+                    </ListGroup>
+                </Card>
+
             </section>)
         }
     }

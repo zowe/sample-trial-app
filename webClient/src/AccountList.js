@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap"
 
 import { stripTrailingSlash } from './utils.js';
 
@@ -53,26 +54,38 @@ class AccountList extends Component {
       return (
         <div>
           <h1>Account(s) List</h1>
-          <ul>
-            {items.map(item => {
-              const { _id, name: { first, last }, email, address } = item;
-              const url = stripTrailingSlash(match.url)
-              return (
-                <li key={_id}>
-                  <div><b>Name:</b><Link to={`${url}/${_id}`} >
-                    <span>{first}  {last}</span>
-                  </Link>
-                  </div>
-                  <div>
-                    <b>Email:</b>{email}
-                  </div>
-                  <div>
-                    <b>Address:</b>{address}
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
+          <Table responsive striped="true">
+            <thead key={0}><tr>
+              <th>Name
+              </th>
+              <th>
+                Email
+              </th>
+              <th>
+                Address
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+              {items.map(item => {
+                const { _id, name: { first, last }, email, address } = item;
+                const url = stripTrailingSlash(match.url)
+                return (
+                  <tr key={_id}>
+                    <td><Link to={`${url}/${_id}`} >
+                      <span>{first}  {last}</span>
+                    </Link>
+                    </td>
+                    <td>
+                      {email}
+                    </td>
+                    <td>
+                      {address}
+                    </td>
+                  </tr>
+                )
+              })}</tbody>
+          </Table>
         </div>
       );
     }

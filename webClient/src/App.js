@@ -2,6 +2,7 @@ import React from "react";
 import { MemoryRouter as Router, Route, Link } from "react-router-dom";
 import AccountList from "./AccountList";
 import AccountDetail from "./AccountDetail";
+import { Navbar, Nav, Jumbotron, Container } from "react-bootstrap"
 // import 'script-loader!./App-css.js';
 
 // var styles;
@@ -41,14 +42,17 @@ class App extends React.Component {
     const pluginBaseUri = this.getDefaultState();
     return (<Router>
       <div>
-        <ul /*styles={styles.mainnav}*/>
-          <li /*styles={styles.mainnavListItem}*/>
-            <Link to="/">Home Page</Link>
-          </li>
-          <li /*styles={styles.mainnavListItem}*/>
-            <Link to="/accounts">Accounts</Link>
-          </li>
-        </ul>
+
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar.Brand href="#home">React Trial App</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link ><Link to="/">Home Page</Link></Nav.Link>
+              <Nav.Link ><Link to="/accounts">Accounts</Link></Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
         <hr />
 
@@ -65,9 +69,14 @@ class App extends React.Component {
 };
 
 const Home = () => (
-  <div>
-    <h2>Home Page Component</h2>
-  </div>
+  <Jumbotron fluid>
+    <Container>
+      <h1>Home Page Component</h1>
+      <p>
+        This is a sample react zlux app connected to its own backend node app
+    </p>
+    </Container>
+  </Jumbotron>
 );
 
 export default App;
