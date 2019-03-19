@@ -29,17 +29,16 @@ class App extends React.Component {
   };
 
   getDefaultState() {
-    const destination = ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "");
-    console.log(destination);
+    const pluginBaseUri = ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "");
+    console.log(pluginBaseUri);
     return {
-      destination
+      pluginBaseUri
     };
   }
 
   render() {
 
-    console.log('react trial app rendrer');
-    console.log(this.state.destination);
+    const pluginBaseUri = this.getDefaultState();
     return (<Router>
       <div>
         <ul /*styles={styles.mainnav}*/>
@@ -54,9 +53,12 @@ class App extends React.Component {
         <hr />
 
         <Route exact path="/" component={Home} />
-        <Route exact path="/accounts" component={AccountList} />
-        <Route path={`/accounts/:accountId`} component={AccountDetail} />
-
+        <Route exact path="/accounts" render={(routeProps) => (
+          <AccountList {...routeProps} {...pluginBaseUri} />
+        )} />
+        <Route path={`/accounts/:accountId`} render={(routeProps) => (
+          <AccountDetail {...routeProps} {...pluginBaseUri} />
+        )} />
       </div>
     </Router>);
   }

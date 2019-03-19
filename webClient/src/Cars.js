@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
-import { stripTrailingSlash,BASE_URL } from './utils.js'
+import { stripTrailingSlash } from './utils.js'
 
 
-const ACCOUNTS_PATH = `${BASE_URL}/accounts`;
 const CAR_PATH = '/cars';
 
 class Cars extends Component {
@@ -16,6 +15,8 @@ class Cars extends Component {
             isLoaded: false,
             carList: []
         };
+
+        this.ACCOUNTS_PATH = `${props.pluginBaseUri}/accounts`;
     }
 
     componentWillReceiveProps(props) {
@@ -36,7 +37,7 @@ class Cars extends Component {
     }
 
     fetchAccountCarData(id) {
-        fetch(`${ACCOUNTS_PATH}/${id}${CAR_PATH}`)
+        fetch(`${this.ACCOUNTS_PATH}/${id}${CAR_PATH}`)
             .then(async (res) => {
                 let resp = await res.json();
                 return resp;

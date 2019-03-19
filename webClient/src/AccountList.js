@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
-import { stripTrailingSlash,BASE_URL } from './utils.js';
+import { stripTrailingSlash } from './utils.js';
 
-const ACCOUNTS_PATH = `${BASE_URL}/accounts`;
+
 
 class AccountList extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +14,12 @@ class AccountList extends Component {
       isLoaded: false,
       items: []
     };
+
+    this.ACCOUNTS_PATH = `${props.pluginBaseUri}/accounts`;
   }
 
   componentDidMount() {
-    fetch(ACCOUNTS_PATH)
+    fetch(this.ACCOUNTS_PATH)
       .then(res => res.json())
       .then(
         (result) => {

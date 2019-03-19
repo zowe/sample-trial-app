@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import { BASE_URL } from './utils.js'
-
-const ACCOUNTS_PATH = `${BASE_URL}/accounts`;
 
 class Profile extends Component {
     constructor(props) {
@@ -12,6 +9,8 @@ class Profile extends Component {
             isLoaded: false,
             ainfo: {}
         };
+
+        this.ACCOUNTS_PATH = `${props.pluginBaseUri}/accounts`;
     }
 
     componentWillReceiveProps(props) {
@@ -29,7 +28,7 @@ class Profile extends Component {
     }
 
     fetchAccountDetail(id) {
-        fetch(`${ACCOUNTS_PATH}/${id}`)
+        fetch(`${this.ACCOUNTS_PATH}/${id}`)
             .then(async (res) => {
                 let resp = await res.json();
                 return resp;
