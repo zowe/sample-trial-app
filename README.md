@@ -35,7 +35,7 @@
 
 1) Download trial app in your zlux folder
    ```
-    git clone https://github.com/zowe/sample-trial-react-app.git
+    git clone https://github.com/zowe/sample-trial-app.git
    ```
 
 1) Assign MVD_DESKTOP_DIR environment variable
