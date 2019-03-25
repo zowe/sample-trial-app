@@ -13,7 +13,10 @@
 1) `git`  
    Test git - `git --version`
 1) `tsc`   
-   Its this trial project specific dependency  
+   Its this trial project specific dependency 
+   ```
+   npm install -g typescript
+   ``` 
    Test typescript - `tsc -v`
 1) Client software(s)
    * your favorite `lightweight IDE`- vscode
