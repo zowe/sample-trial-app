@@ -3,6 +3,28 @@
 
 ## Manual Installation of App
 
+### Part 0: Environment
+1) `node`  
+   Download & Install node,feel fre to download latest version from `https://nodejs.org/en/download/`   
+   Test node - `node -v`,  
+1) `npm`  
+   Node download in step 1, has npm included  
+   Test npm - `npm -v`
+1) `git`  
+   Test git - `git --version`
+1) `tsc`   
+   Its this trial project specific dependency  
+   Test typescript - `tsc -v`
+1) Client software(s)
+   * your favorite `lightweight IDE`- vscode
+   * your favorite `browser` - chrome/firefox
+1) `Git Bash` // windows only requirement   
+   *NOTE:* If you plan to run zlux project locally, based on tutorial      
+   `https://developer.ibm.com/tutorials/zowe-step-by-step-tutorial/`     
+
+   Download & install git bash from https://git-scm.com/downloads   
+
+
 ### Part 1: Build Projects
 1) Download ZLUX Project
    ```
