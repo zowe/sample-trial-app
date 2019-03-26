@@ -1,19 +1,18 @@
 ## Sample ZLUX App
 
-
 ## Manual Installation of App
 
 ### Part 0: Environment
 1) `node`  
-   Download & Install node,feel fre to download latest version from `https://nodejs.org/en/download/`   
-   Test node - `node -v`,  
+   Download & Install latest version of [Node](https://nodejs.org/en/download/)
+   Test node - `node -v`  
 1) `npm`  
    Node download in step 1, has npm included  
    Test npm - `npm -v`
 1) `git`  
    Test git - `git --version`
 1) `tsc`   
-   Its this trial project specific dependency 
+   Trial project specific dependency 
    ```
    npm install -g typescript
    ``` 
@@ -21,11 +20,21 @@
 1) Client software(s)
    * your favorite `lightweight IDE`- vscode
    * your favorite `browser` - chrome/firefox
-1) `Git Bash` // windows only requirement   
-   *NOTE:* If you plan to run zlux project locally, based on tutorial      
-   `https://developer.ibm.com/tutorials/zowe-step-by-step-tutorial/`     
 
-   Download & install git bash from https://git-scm.com/downloads   
+1) If you plan to run zlux project locally, based on tutorial [ZOWE WebUi Tutorial](https://developer.ibm.com/tutorials/zowe-step-by-step-tutorial/)     
+    * `Git Bash` // windows only requirement
+   Download & install [Git Bash](https://git-scm.com/downloads) 
+
+ 1) **_For building zLUX framework and apps_**   
+    * Download and install [jdk](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - v8 minimum. 
+        * Set the JAVA_HOME environment variable, if it is not already defined. 
+        * Test java: `java -version`   
+    * Download [ant](https://ant.apache.org/bindownload.cgi) - v1.10 minimum.
+        * Set the ANT_HOME environment variable, if it is not already defined. 
+        * Add the Ant binary directory to the PATH environment variable. 
+        * Test ant: `ant -version`   
+    * [ant-contrib](https://sourceforge.net/projects/ant-contrib/files/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.zip/download) - v1 minimum  
+        * Just copy downloaded ant-contrib jar to lib folder under apache-ant 
 
 
 ### Part 1: Build Projects
