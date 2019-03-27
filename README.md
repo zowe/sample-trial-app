@@ -55,20 +55,28 @@
      set MVD_DESKTOP_DIR=\path\to\zlux\zlux-app-manager\virtual-desktop\
     ```
 
-1) Build Node App - This will create folder sample-trial-app/lib
+1) Build Node App - 
     ```
     cd sample-trial-app/nodeServer 
     npm install
     npm run build
     ```
-    
-1) Build React App - this will create folder sample-trial-app/web   
+    It will create a build in `lib` folder in root directory of plugin - sample-trial-app/lib
+
+1) Configure base url for API     
+   * __Remote API endpoint__ - either use external data service, configure it using BASE_URL value in config.js.    
+    When using remote API we won't require the node service built in previous step and `dataServices` section in pluginDefinition.json can be omitted completely as well.
+   * __Data Service API endpoint__ - or we can use dataservice configured in pluginDefinition.json and built in previous step and places in folder `lib` 
+
+1) Build React App   
 
    ```
     cd sample-trial-app/webClient
     npm install
     npm run build
     ```
+
+    It will create a build in `web` folder in root directory of plugin - sample-trial-app/web
 
 ### Part 2: Deployment
 1) `ssh ibmuser@my.mainframe.com`

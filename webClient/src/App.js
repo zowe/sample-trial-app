@@ -2,6 +2,7 @@ import React from "react";
 import { MemoryRouter as Router, Route, Link } from "react-router-dom";
 import AccountList from "./AccountList";
 import AccountDetail from "./AccountDetail";
+import { getBaseUrl } from './utils.js'
 import { Navbar, Nav, Jumbotron, Container } from "react-bootstrap"
 // import 'script-loader!./App-css.js';
 
@@ -14,6 +15,8 @@ function mergeStyles(...args) {
   }
   return obj;
 }
+
+const BASE_URL = getBaseUrl()
 
 class App extends React.Component {
 
@@ -30,7 +33,7 @@ class App extends React.Component {
   };
 
   getDefaultState() {
-    const pluginBaseUri = ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "");
+    const pluginBaseUri = BASE_URL || ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "");
     console.log(pluginBaseUri);
     return {
       pluginBaseUri
