@@ -66,7 +66,7 @@
 1) Configure base url for API     
    * __Remote API endpoint__ - either use external data service, configure it using BASE_URL value in config.js.    
     When using remote API we won't require the node service built in previous step and `dataServices` section in pluginDefinition.json can be omitted completely as well.
-   * __Data Service API endpoint__ - or we can use dataservice configured in pluginDefinition.json and built in previous step and places in folder `lib` 
+   * __Data Service API endpoint__ - or we can use dataservice configured in pluginDefinition.json and built and placed in folder `lib` in previous step  
 
 1) Build React App   
 
