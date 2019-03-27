@@ -105,3 +105,24 @@ Replace `ibmuser@my.mainframe.com` with your username and mainframe-ip
 
 4) Restart ZOWE  
 Please restart Zowe, after all the files are transferred/deployed    
+
+    **Note**  
+    Replace `ZOWESVR` below with name of your installed zowe instance
+
+    from TN3270 terminal
+    ```
+    # stop/cancel
+    /c ZOWESVR
+
+    # start/restart
+    /s ZOWESVR
+    ```
+
+5) Access newly added `Sample Trial` app on Zowe Desktop
+    *   Open browser on your machine and access zowe desktop     
+      `https://mymainframe.ibm.com:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`   
+    *   Access `Sample Trial` plugin in `start section` of Zowe Dekstop where all apps are listed  
+
+
+
+
