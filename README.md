@@ -43,6 +43,8 @@
     git clone --recursive git@github.com:zowe/zlux.git
     cd zlux
     git submodule foreach "git checkout master"
+    cd zlux-app-manager/virtual-desktop
+    npm install
    ```
 
 1) Download trial app in your zlux folder
