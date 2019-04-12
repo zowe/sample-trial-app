@@ -38,7 +38,7 @@ class Cars extends Component {
     }
 
     fetchAccountCarData(id) {
-        fetch(`${this.ACCOUNTS_PATH}/${id}${CAR_PATH}`)
+        fetch(`${this.ACCOUNTS_PATH}/${id}${CAR_PATH}`, {credentials: 'include'})
             .then(async (res) => {
                 let resp = await res.json();
                 return resp;
