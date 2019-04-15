@@ -3,3 +3,4 @@ lib
 web
 .nyc_output/
 coverage/
+Steps.md
