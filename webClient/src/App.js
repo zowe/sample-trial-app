@@ -17,6 +17,7 @@ function mergeStyles(...args) {
 }
 
 const BASE_URL = getBaseUrl()
+const APP_DEFAULT_TITLE = 'Sample Trial App';
 
 class App extends React.Component {
 
@@ -29,7 +30,7 @@ class App extends React.Component {
     } else {
       this.state = this.getDefaultState();
     }
-
+    this.setTitle();
   };
 
   getDefaultState() {
@@ -43,6 +44,7 @@ class App extends React.Component {
   render() {
 
     const pluginBaseUri = this.getDefaultState();
+    const setTitle = this.setTitle.bind(this);
     return (<Router>
       <div>
 
@@ -59,27 +61,43 @@ class App extends React.Component {
 
         <hr />
 
-        <Route exact path="/" component={Home} />
+        <Route exact path='/' render={() => <Home setTitle={setTitle} />} />
         <Route exact path="/accounts" render={(routeProps) => (
-          <AccountList {...routeProps} {...pluginBaseUri} />
+          <AccountList {...routeProps} {...pluginBaseUri} setTitle={setTitle} />
         )} />
         <Route path={`/accounts/:accountId`} render={(routeProps) => (
-          <AccountDetail {...routeProps} {...pluginBaseUri} />
+          <AccountDetail {...routeProps} {...pluginBaseUri} setTitle={setTitle} />
         )} />
       </div>
     </Router>);
   }
+
+  setTitle(title) {
+    let newTitle = APP_DEFAULT_TITLE;
+    if (title) {
+      newTitle = [title, newTitle].join(' | ');
+    }
+
+    if(this.props.resources.windowActions ) {
+      this.props.resources.windowActions.setTitle(newTitle);
+    } else {
+      document.title=newTitle;
+    }
+  }
 };
 
-const Home = () => (
-  <Jumbotron fluid>
-    <Container>
-      <h1>Home Page Component</h1>
-      <p>
-        This is a sample react zlux app connected to its own backend node app
-    </p>
-    </Container>
-  </Jumbotron>
-);
+const Home = ({setTitle}) =>{
+  setTitle();
+  return (
+    <Jumbotron fluid>
+      <Container>
+        <h1>Home Page Component</h1>
+        <p>
+          This is a sample react zlux app connected to its own backend node app
+      </p>
+      </Container>
+    </Jumbotron>
+  );
+}
 
 export default App;

@@ -63,6 +63,7 @@ class Profile extends Component {
             return (<div>Loading...</div>);
         } else {
             const { name: { first, last }, address, email } = ainfo;
+            this.props.setTitle(`Account:${first} ${last}` );
             return (<section className="details-section">
                 <h1>Profile</h1>
                 <Card>

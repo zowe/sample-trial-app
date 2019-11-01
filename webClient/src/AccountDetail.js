@@ -32,7 +32,7 @@ class AccountDetail extends Component {
 
         return (
             <div>
-                <Profile id={id} match={this.props.match} pluginBaseUri={this.props.pluginBaseUri} />
+                <Profile id={id} match={this.props.match} pluginBaseUri={this.props.pluginBaseUri} setTitle={this.props.setTitle} />
                 <Cars id={id} match={this.props.match} pluginBaseUri={this.props.pluginBaseUri} />
             </div>
         );

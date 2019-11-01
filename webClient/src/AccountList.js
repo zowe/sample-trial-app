@@ -20,6 +20,7 @@ class AccountList extends Component {
   }
 
   componentDidMount() {
+    this.props.setTitle('Accounts List');
     fetch(this.ACCOUNTS_PATH, {credentials: 'include'})
       .then(res => res.json())
       .then(
