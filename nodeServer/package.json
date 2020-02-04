@@ -9,7 +9,7 @@
     "test": "istanbul cover cucumber-js -- test/features/*feature --require test/support/ --report cobertura --report html --tags \"not @leave\""
   },
   "author": "",
-  "license": "ISC",
+  "license": "EPL-2.0",
   "dependencies": {
     "assert": "^1.4.1",
     "cucumber": "^5.1.0",
