@@ -1,6 +1,25 @@
 {
-    "extends": "../../zlux-app-manager/virtual-desktop/plugin-config/tsconfig.react.base.json",
-    "compilerOptions": {
-        "skipLibCheck": true
-    }
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src"
+  ]
 }

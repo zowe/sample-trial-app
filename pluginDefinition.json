@@ -4,41 +4,19 @@
   "pluginVersion": "1.0.0",
   "pluginType": "application",
   "webContent": {
-    "framework": "react",
+    "framework": "iframe",
+    "startingPage": "index.html",
     "launchDefinition": {
-      "pluginShortNameKey": "sampletrial",
-      "pluginShortNameDefault": "Trial Sample",
-      "imageSrc": "assets/icon.png"
+      "pluginShortNameKey": "Sample Trial App",
+      "pluginShortNameDefault": "Sample Trial App", 
+      "imageSrc": "images/icon.png"
     },
-    "descriptionKey": "sampletrialdesc",
-    "descriptionDefault": "Sample Trial App showing React",
+    "descriptionKey": "",
+    "descriptionDefault": "",
     "isSingleWindowApp": true,
     "defaultWindowStyle": {
-      "width": 850,
-      "height": 450
-    }
-  },
-  "dataServices": [
-    {
-      "type": "router",
-      "name": "trial",
-      "filename": "app.js",
-      "routerFactory": "myTrialRouter",
-      "dependenciesIncluded": true,
-      "initializerLookupMethod": "external",
-      "version": "1.0.0"
-    }
-  ],
-  "configurationData": {
-    "resources": {
-      "requests": {
-        "aggregationPolicy": "override",
-        "subResources": {
-          "app": {
-            "aggregationPolicy": "override"
-          }
-        }
-      }
+      "width": 1400,
+      "height": 800
     }
   }
 }
