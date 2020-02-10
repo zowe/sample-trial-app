@@ -1,7 +1,5 @@
 node_modules/
 lib
-web
 .nyc_output/
 coverage/
-dist/
-web/
+web/app

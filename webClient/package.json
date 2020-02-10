@@ -12,13 +12,11 @@
   },
   "scripts": {
     "start": "cross-env HTTPS=true react-scripts start",
-    "build": "react-scripts build && npm run clean2 && npm run copy-static2",
+    "build": "react-scripts build && npm run clean && npm run copy-static",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf ../web && rimraf ../public",
-    "clean2": "rimraf ../dist/web && rimraf ../dist/public",
-    "copy-static": "cp -r build ../web && cp -r public ../public && rimraf build",
-    "copy-static2": "cp -r build ../dist/app && cp -r public ../dist/public && rimraf build"
+    "clean": "rimraf ../web/app",
+    "copy-static": "cp -r build ../web/app && rimraf build"
   },
   "eslintConfig": {
     "extends": "react-app"
