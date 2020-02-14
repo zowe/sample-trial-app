@@ -12,11 +12,15 @@
   },
   "scripts": {
     "start": "cross-env HTTPS=true react-scripts start",
-    "build": "react-scripts build && npm run clean && npm run copy-static",
+    "build": "react-scripts build && npm run build-web && npm run build-dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf ../web/app",
-    "copy-static": "cp -r build ../web/app && rimraf build"
+    "pre-web": "rimraf ../web && mkdirp ../web",
+    "build-web": "npm run pre-web && cp -r build ../web/app && cp -r public ../web && cp ../iframe-index.html ../web/index.html && npm run post-web",
+    "post-web": "rimraf build",
+    "pre-dist": "rimraf ../dist && mkdirp ../dist",
+    "build-dist": "npm run pre-dist && cp -r ../web ../dist && cp ../pluginDefinition.json ../dist && cp -r ../bin ../dist && cp -r ../ui-server ../dist/server && npm run post-dist",
+    "post-dist": "rimraf ../dist/ui-server/node_modules"
   },
   "eslintConfig": {
     "extends": "react-app"

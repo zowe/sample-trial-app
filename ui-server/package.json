@@ -1,0 +1,27 @@
+{
+  "name": "explorer-ui-server",
+  "version": "0.2.12",
+  "description": "HTTP Server to host static files",
+  "author": "IBM",
+  "license": "EPL-2.0",
+  "main": "src/index.js",
+  "bin": {
+    "explorer-ui-server": "src/index.js"
+  },
+  "publishConfig": {
+    "registry": "https://zowe.jfrog.io/zowe/api/npm/npm-local-release/"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "yargs": "^12.0.5"
+  },
+  "devDependencies": {
+    "axios": "^0.19.0",
+    "chai": "^4.2.0",
+    "debug": "^4.1.1",
+    "eslint": "^5.16.0"
+  }
+}

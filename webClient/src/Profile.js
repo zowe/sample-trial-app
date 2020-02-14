@@ -29,7 +29,7 @@ class Profile extends Component {
     }
 
     fetchAccountDetail(id) {
-        fetch(`${this.ACCOUNTS_PATH}/${id}`, {credentials: 'include'})
+        fetch(`${this.ACCOUNTS_PATH}/${id}`)
             .then(async (res) => {
                 let resp = await res.json();
                 return resp;

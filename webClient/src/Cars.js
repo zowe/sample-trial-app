@@ -28,7 +28,7 @@ class Cars extends Component {
 
         if (props.match !== match) {
             console.log('did not match');
-            this.fetchAccountData(props.match.params.accountId);
+            this.fetchAccountCarData(props.match.params.accountId);
         }
     }
 
@@ -38,7 +38,7 @@ class Cars extends Component {
     }
 
     fetchAccountCarData(id) {
-        fetch(`${this.ACCOUNTS_PATH}/${id}${CAR_PATH}`, {credentials: 'include'})
+        fetch(`${this.ACCOUNTS_PATH}/${id}${CAR_PATH}`)
             .then(async (res) => {
                 let resp = await res.json();
                 return resp;

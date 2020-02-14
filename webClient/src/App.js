@@ -1,11 +1,11 @@
 
 import 'bootstrap/dist/css/bootstrap.css';
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { MemoryRouter as Router, Route, Link } from "react-router-dom";
 import AccountList from "./AccountList";
 import AccountDetail from "./AccountDetail";
 import { getBaseUrl } from './utils.js'
-import { Navbar, Nav, Jumbotron, Container } from "react-bootstrap"
+import { Navbar, Nav, Jumbotron, Container, NavItem } from "react-bootstrap"
 // import './App.css';
 
 // var styles;
@@ -55,8 +55,12 @@ class App extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
+            <NavItem>
               <Link to="/">Home Page</Link>
+            </NavItem>
+            <NavItem>
               <Link to="/accounts">Accounts</Link>
+            </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
