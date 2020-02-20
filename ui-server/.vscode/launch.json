@@ -10,7 +10,7 @@
             "name": "run ui-server",
             "program": "${workspaceFolder}\\src\\index.js",
              //"args": ["-s", "jes", "-b", "/ui/v1/explorer-jes", "-p", "7554", "-k", "C:\\zowe\\explorer-componentisation\\configs\\server.key", "-c", "C:\\zowe\\explorer-componentisation\\configs\\server.cert", "-x", "", "-w", "", "-f", "https://tvt5003.svl.ibm.com"],
-            "args": [ "-s", "jes", "-b", "/api/v1", "-p", "8080", "-f", "https://test.zowe.org/*", "-k", "configs/server.key", "-c", "configs/server.cert", "-d", "../dist/web/app" ] 
+            "args": [ "-s", "jes", "-b", "/ui/v1/sample-trial-app", "-p", "8080", "-f", "https://localhost:8544", "-k", "configs/server.key", "-c", "configs/server.cert", "-d", "../dist/web/app", "-z", "localhost:16000" ] 
         },
         {
             "type": "node",

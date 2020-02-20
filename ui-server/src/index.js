@@ -14,6 +14,8 @@ const path = require('path');
 const fs = require('fs');
 const https = require('https');
 const { constants: cryptoConstants } = require('crypto');
+const replace = require('buffer-replace');
+
 
 // load package meta
 const pkg = require('../package.json');
@@ -71,6 +73,11 @@ var argv = require('yargs')
     description: 'csp whitelist ancestors frames',
     demandOption: true
   })
+  .option('z', {
+    alias: 'zowe',
+    default: '',
+    description: 'zowe_host:gateway_port'
+  })
   .option('v', {
     alias: 'verbose',
     default: false,
@@ -98,7 +105,8 @@ const paramConfig = {
   },
   'csp': {
     'frame-ancestors': [argv.csp]
-  }
+  },
+  'zowe':argv.zowe
 };
 
 function validateParams (argv) {
@@ -221,8 +229,6 @@ const requestHandler = (request, response) => {
     }
   }
 
-  response.setHeader('Access-Control-Allow-Origin', 'https://localhost:8080');
-
   process.stdout.write('request path\n');
   if (file) {
     process.stdout.write(`[${file}] request path\n`);
@@ -249,7 +255,12 @@ const requestHandler = (request, response) => {
       } else {
         writeLog(request.url, 200, file);
         response.writeHead(200, { 'Content-Type': contentType });
-        response.end(content);
+        if(config.zowe) {
+          response.end(replace(content, 'localhost:18000', config.zowe));
+          response.end(replace(content, 'localhost:18000', config.zowe));
+        } else {
+          response.end(content);
+        }
       }
     });
   } else {
