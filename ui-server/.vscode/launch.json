@@ -1,0 +1,44 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "run ui-server",
+            "program": "${workspaceFolder}\\src\\index.js",
+             //"args": ["-s", "jes", "-b", "/ui/v1/explorer-jes", "-p", "7554", "-k", "C:\\zowe\\explorer-componentisation\\configs\\server.key", "-c", "C:\\zowe\\explorer-componentisation\\configs\\server.cert", "-x", "", "-w", "", "-f", "https://tvt5003.svl.ibm.com"],
+            "args": [ "-s", "jes", "-b", "/ui/v1/sample-trial-app", "-p", "8080", "-f", "https://localhost:8544", "-k", "configs/server.key", "-c", "configs/server.cert", "-d", "../dist/web/app", "-z", "localhost:16000" ] 
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha All",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceFolder}/test"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Single",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceFolder}\\test\\csp\\test-csp.js"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+  "service-for": "{{service-name}}",
+  "paths": [{
+    "uri": "{{path-uri}}",
+    "dir": "{{path-dir}}"
+  }],
+  "port": {{port}},
+  "https": {
+    "pfx": "{{https-pfx}}",
+    "passphrase": "{{https-passphrase}}",
+    "key": "{{https-key}}",
+    "cert": "{{https-cert}}"
+  },
+  "csp": {
+    "frame-ancestors": [
+      "{{csp-frame-ancestors}}"
+    ]
+  }
+}

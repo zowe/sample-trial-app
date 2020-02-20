@@ -11,10 +11,16 @@
     "react-scripts": "^2.1.8"
   },
   "scripts": {
-    "start": "node_modules\\.bin\\webpack --progress --colors --watch",
-    "build": "node_modules\\.bin\\webpack --progress --colors",
+    "start": "cross-env HTTPS=true react-scripts start",
+    "build": "cross-env PUBLIC_URL=/ui/v1/sample-trial-app/ react-scripts build && npm run build-web && npm run build-dist",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pre-web": "rimraf ../web && mkdirp ../web && mkdirp ../web/images",
+    "build-web": "npm run pre-web && cpr build ../web/app && cpr src/assets/icon.png ../web/images/icon.png && npm run post-web",
+    "post-web": "rimraf build",
+    "pre-dist": "rimraf ../dist",
+    "build-dist": "npm run pre-dist && cpr ../web ../dist/web && cpr ../bin ../dist/bin && cpr ../ui-server ../dist/server && npm run post-dist",
+    "post-dist": "rimraf ../dist/server/node_modules"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,12 +41,21 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-runtime": "^6.23.0",
     "copy-webpack-plugin": "^5.0.0",
+    "cpr": "^3.0.1",
+    "cross-env": "^7.0.0",
+    "mkdirp": "^1.0.3",
+    "rimraf": "^3.0.1",
     "script-loader": "^0.7.2",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.3333",
-    "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-config": "^7.5.0"
+  },
+  "config": {
+    "pluginShortName": "TRIAL",
+    "pluginId": "org.zowe.zlux.sample.trialapp",
+    "pluginName": "Sample Trial App",
+    "baseuri": "/ui/v1/sample-trial-app"
   }
 }

@@ -1,0 +1,40 @@
+.vscode
+webpack.config.js
+.gitignore
+.eslintrc.js
+.babelrc
+.history
+Jenkinsfile
+resources
+src/languages
+
+.editorconfig
+.eslintrc.yml
+.eslintignore
+
+# MacOS
+.DS_Store
+
+# Dependency directories
+node_modules/
+
+# SonarQube scanner
+.scannerwork
+sonar-project.properties
+
+# test result
+.nyc_output
+.nycrc
+reports/
+
+# default public folder
+public
+
+# dco signoffs
+dco_signoffs
+
+# tests
+test/
+
+# AppScan configuration
+*.ppf

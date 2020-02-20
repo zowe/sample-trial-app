@@ -21,7 +21,7 @@ class AccountList extends Component {
 
   componentDidMount() {
     this.props.setTitle('Accounts List');
-    fetch(this.ACCOUNTS_PATH, {credentials: 'include'})
+    fetch(this.ACCOUNTS_PATH)
       .then(res => res.json())
       .then(
         (result) => {
@@ -75,9 +75,9 @@ class AccountList extends Component {
                   <tr key={_id}>
                     <td>
                       {/* uncomment block below to add each of user detail */}
-                      {/*<Link to={`${url}/${_id}`} >
+                      {<Link to={`${url}/${_id}`} >
                       <span>{first}  {last}</span>
-                </Link>*/}
+                </Link>}
                     </td>
                     <td>
                       {email}
