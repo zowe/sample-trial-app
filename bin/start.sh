@@ -24,8 +24,8 @@
 echo 'sample-trial-app start begin'
 NODE_BIN=${NODE_HOME}/bin/node
 
-echo "LAUNCH_COMPONENT: ${i} "
-COMPONENT_DIR=$(dirname "${i}")
+echo "LAUNCH_COMPONENT: ${LAUNCH_COMPONENT} "
+COMPONENT_DIR=$(dirname "${LAUNCH_COMPONENT}")
 echo "COMPONENT_DIR: ${COMPONENT_DIR}"
 
 # load config from env
