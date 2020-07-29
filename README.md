@@ -3,7 +3,7 @@
 ## PART I: Download & Build on local
 
 1) Download & build trial app
-2) Build `web` folder
+   Build `web` folder
    ```
     git clone https://github.com/zowe/sample-trial-app.git
     cd webClient
@@ -11,10 +11,12 @@
     npm run build
    ```
 
-3) Transfer app to server  
+2) Transfer app to server  
    Transfer `web` folder and `pluginDefinition.json`
    ```
+   cd sample-trial-app
    scp -r web ibmuser@my.mainframe.com:</usr/lpp/extender>/sample-trial-app
+   scp -r pluginDefinition.json ibmuser@my.mainframe.com:</usr/lpp/extender>/sample-trial-app
    ```
 
 ## PART II: Deploy with Zowe on server
