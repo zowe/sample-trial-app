@@ -30,22 +30,20 @@ class App extends React.Component {
     // if (metadata != null && metadata.data != null && metadata.data.type != null) {
     //   this.handleLaunchOrMessageObject(metadata.data);
     // } else {
-      this.state = this.getDefaultState();
-    //}
+      this.state = {
+        pluginBaseUri: this.getPluginBaseUri()
+      }
     this.setTitle();
   };
 
-  getDefaultState() {
+  getPluginBaseUri() {
     const pluginBaseUri = BASE_URL //|| ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "");
-    console.log(pluginBaseUri);
-    return {
-      pluginBaseUri
-    };
+    console.log(`pluginBaseUri:${pluginBaseUri}`);
+    return  pluginBaseUri;
   }
 
   render() {
-
-    const pluginBaseUri = this.getDefaultState();
+    const {pluginBaseUri} = this.state;
     const setTitle = this.setTitle.bind(this);
     return (<Router>
       <div>
@@ -69,10 +67,10 @@ class App extends React.Component {
 
         <Route exact path='/' render={() => <Home setTitle={setTitle} />} />
         <Route exact path="/accounts" render={(routeProps) => (
-          <AccountList {...routeProps} {...pluginBaseUri} setTitle={setTitle} />
+          <AccountList {...routeProps} pluginBaseUri={pluginBaseUri} setTitle={setTitle} />
         )} />
         <Route path={`/accounts/:accountId`} render={(routeProps) => (
-          <AccountDetail {...routeProps} {...pluginBaseUri} setTitle={setTitle} />
+          <AccountDetail {...routeProps} pluginBaseUri={pluginBaseUri} setTitle={setTitle} />
         )} />
       </div>
     </Router>);

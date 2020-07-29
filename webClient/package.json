@@ -10,17 +10,15 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8"
   },
+  "proxy": "http://localhost:8080",
   "scripts": {
-    "start": "cross-env HTTPS=true react-scripts start",
-    "build": "cross-env PUBLIC_URL=/ui/v1/sample-trial-app/ react-scripts build && npm run build-web && npm run build-dist",
+    "start": "react-scripts start",
+    "build": "cross-env PUBLIC_URL=../web/ react-scripts build && npm run web",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pre-web": "rimraf ../web && mkdirp ../web && mkdirp ../web/images",
-    "build-web": "npm run pre-web && cpr build ../web/app && cpr src/assets/icon.png ../web/images/icon.png && npm run post-web",
-    "post-web": "rimraf build",
-    "pre-dist": "rimraf ../dist",
-    "build-dist": "npm run pre-dist && cpr ../web ../dist/web && cpr ../bin ../dist/bin && cpr ../ui-server ../dist/server && npm run post-dist",
-    "post-dist": "rimraf ../dist/server/node_modules"
+    "preweb": "rimraf ../web",
+    "web": "mv build ../web && cp -r src/assets ../web/images",
+    "postweb": "rimraf build"
   },
   "eslintConfig": {
     "extends": "react-app"
