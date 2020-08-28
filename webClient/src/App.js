@@ -34,7 +34,7 @@ class App extends React.Component {
   };
 
   getDefaultState() {
-    const pluginBaseUri = BASE_URL || ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "");
+    const pluginBaseUri = BASE_URL || ZoweZLUX.uriBroker.pluginRESTUri(this.props.resources.pluginDefinition.getBasePlugin(), 'trial', "").slice(0,-1);
     console.log(pluginBaseUri);
     return {
       pluginBaseUri
@@ -91,7 +91,7 @@ const Home = ({setTitle}) =>{
   return (
     <Jumbotron fluid>
       <Container>
-        <h1>Home Page Component</h1>
+        <h1>My Sample app</h1>
         <p>
           This is a sample react zlux app connected to its own backend node app
       </p>

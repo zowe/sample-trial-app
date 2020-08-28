@@ -43,6 +43,16 @@
     git clone --recursive git@github.com:zowe/zlux.git
     cd zlux
     git submodule foreach "git checkout master"
+    git clone git@github.com:zowe/sample-angular-app.git
+    git clone git@github.com:zowe/sample-react-app.git
+    git clone git@github.com:zowe/sample-iframe-app.git
+    git clone git@github.com:zowe/zlux-editor.git
+    git clone git@github.com:zowe/tn3270-ng2.git
+    git clone git@github.com:zowe/vt-ng2.git
+    git clone git@github.com:zowe/zss-auth.git
+    git clone git@github.com:zowe/explorer-jes.git
+    git clone git@github.com:zowe/explorer-mvs.git
+    git clone git@github.com:zowe/explorer-uss.git
     cd zlux-app-manager/virtual-desktop
     npm install
    ```
