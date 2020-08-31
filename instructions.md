@@ -133,6 +133,19 @@ browse a app,
 
 
 
+  "pluginShortNameDefault": "My Sample App",
+      "imageSrc": "assets/icon.png"
+    },
+    "descriptionKey": "sampletrialdesc",
+    "descriptionDefault": "Sample Trial App showing React",
+    "isSingleWindowApp": true,
+    "defaultWindowStyle": {
+      "width": 800,
+      "height": 800
+    }
+
+
+
 
 
 
