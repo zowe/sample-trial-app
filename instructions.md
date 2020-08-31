@@ -82,3 +82,58 @@ These are red
 
 
 
+
+open-app
+Local 1
+- start-zlux
+- login - and no app there
+
+Local 2
+- build-app
+- register-app
+
+Browser:
+localhost:8544
+open-start menu - refresh applications
+app will show up
+browse a app,
+
+go back to code add missing column
+- build-app
+
+go back to browser 
+reload the whole localhost:8544
+column will be there
+
+- lets look at plugin deg=finition file it defines configuration registration
+- register-app
+
+Local 1:
+stop zlux - ctrl+c
+start-zlux
+check name is changed and window open with different size
+
+
+browser 
+remote zowe desktop
+check app is there , its not there
+
+local 2
+deploy-app
+
+ssh s0w1
+register-app
+Ended with rc=0
+
+browser 
+remote zowe desktop
+open-start menu - refresh applications
+app will show up
+browse a app,
+
+
+
+
+
+
+
