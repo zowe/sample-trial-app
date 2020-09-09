@@ -87,12 +87,9 @@ class Cars extends Component {
                                 <th>Origin</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {carList.length > 0 && carList.map(car => {
+                        <tbody>{carList.length > 0 && carList.map(car => {
                                 const { _id, Name, Year, Origin } = car;
-
-                                return (
-                                    <tr key={_id}>
+                                return (<tr key={_id}>
                                         <td>
                                             <Link to={`${url}${CAR_PATH}/${_id}`}>
                                                 <span>{Name} </span>
@@ -104,11 +101,10 @@ class Cars extends Component {
                                         <td>
                                             {Origin}
                                         </td>
-
                                     </tr>
                                 )
                             }
-                            )} {carList.length === 0 && <h3>No cars!</h3>}</tbody>
+                            )}{carList.length === 0 && <h3>No cars!</h3>}</tbody>
                     </Table >
                 </section >)
         }
