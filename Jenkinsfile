@@ -10,6 +10,7 @@
  * Copyright IBM Corporation 2020
  */
 
+def WEB_CLIENT = 'webClient'
 
 node('ibm-jenkins-slave-dind') {
   def lib = library("jenkins-library").org.zowe.jenkins_shared_library
@@ -20,7 +21,7 @@ node('ibm-jenkins-slave-dind') {
 
   pipeline.setup(
     packageName: 'org.zowe.sample-trial-app',
-    baseDirectory: 'webClient',
+    baseDirectory: WEB_CLIENT,
     nodeJsVersion: 'v10.18.1',
     installRegistries: [
       [
@@ -39,14 +40,14 @@ node('ibm-jenkins-slave-dind') {
   pipeline.build()
 
   // we have pax packaging step
-  pipeline.packaging(name: 'sample-trial-app', baseDirectory: '')
+  pipeline.packaging(name: 'sample-trial-app', baseDirectory:'.')
 
   // define we need publish stage
   pipeline.publish(
     operation: {
       echo "Default npm publish will be skipped."
     },
-    baseDirectory: '',
+    baseDirectory:'.',
     artifacts: [
       '.pax/sample-trial-app.pax'
     ],
