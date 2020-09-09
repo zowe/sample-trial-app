@@ -39,13 +39,14 @@ node('ibm-jenkins-slave-dind') {
   pipeline.build()
 
   // we have pax packaging step
-  pipeline.packaging(name: 'sample-trial-app')
+  pipeline.packaging(name: 'sample-trial-app', baseDirectory: '')
 
   // define we need publish stage
   pipeline.publish(
     operation: {
       echo "Default npm publish will be skipped."
     },
+    baseDirectory: '',
     artifacts: [
       '.pax/sample-trial-app.pax'
     ],
