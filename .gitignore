@@ -5,10 +5,13 @@ coverage/
 web
 dist
 
-#pax folder
+#pax ignore
 .pax/*
 !.pax/.keep
 !.pax/pre-packaging.sh
 !.pax/post-packaging.sh
 !.pax/prepare-workspace.sh
 !.pax/catchall-packaging.sh
+
+# jenkin ignore
+**/*@tmp/
