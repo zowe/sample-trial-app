@@ -1,6 +1,7 @@
 {
-  "name": "sample-trial-react-app",
+  "name": "sample-trial-app",
   "version": "0.1.0",
+  "description":"Zowe Sample Trial App",
   "license": "EPL-2.0",
   "dependencies": {
     "bootstrap": "^4.3.1",
