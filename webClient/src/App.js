@@ -49,7 +49,7 @@ class App extends React.Component {
       <div>
 
         <Navbar bg="dark" variant="dark" expand="lg">
-          <Navbar.Brand href="#home">React Trial App</Navbar.Brand>
+          <Navbar.Brand href="#home">Sample Trial App</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

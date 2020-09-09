@@ -67,12 +67,10 @@ class AccountList extends Component {
               </th>
             </tr>
             </thead>
-            <tbody>
-              {items.map(item => {
+            <tbody>{items.map(item => {
                 const { _id, name: { first, last }, email, address } = item;
                 const url = stripTrailingSlash(match.url)
-                return (
-                  <tr key={_id}>
+                return (<tr key={_id}>
                     <td>
                       {/* uncomment block below to add each of user detail */}
                       {<Link to={`${url}/${_id}`} >
