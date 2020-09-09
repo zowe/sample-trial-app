@@ -37,7 +37,7 @@ mkdir -p "${PAX_WORKSPACE_DIR}/content"
 # copy web sample-trial-app to target folder
 echo "[${SCRIPT_NAME}] copying sample trial app"
 mkdir -p "${PAX_WORKSPACE_DIR}/content/web"
-cp -r web "${PAX_WORKSPACE_DIR}/content/web"
+cp -r web "${PAX_WORKSPACE_DIR}/content"
 cp  pluginDefinition.json "${PAX_WORKSPACE_DIR}/content"
 
 # copy source sample-trial-app to target folder
@@ -45,7 +45,7 @@ echo "[${SCRIPT_NAME}] copying source to sample trial app"
 ## remove node_modules to provide source only
 rm -rf webClient/node_modules
 mkdir -p "${PAX_WORKSPACE_DIR}/content/webClient"
-cp -r webClient "${PAX_WORKSPACE_DIR}/content/webClient"
+cp -r webClient "${PAX_WORKSPACE_DIR}/content"
 
 # move content to another folder
 rm -fr "${PAX_WORKSPACE_DIR}/ascii"
