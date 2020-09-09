@@ -11,7 +11,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3"
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:18000",
   "scripts": {
     "start": "react-scripts start",
     "build": "cross-env PUBLIC_URL=../web/ react-scripts build && npm run web",
