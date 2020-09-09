@@ -18,31 +18,34 @@
 
 # contants
 SCRIPT_NAME=$(basename "$0")
-BASEDIR=$(dirname "$0")
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+ROOT_DIR=$(cd "$SCRIPT_DIR" && cd .. && pwd)
 PAX_WORKSPACE_DIR=.pax
+cd "${ROOT_DIR}/webClient"
 PACKAGE_NAME=$(node -e "console.log(require('./package.json').name)")
 PACKAGE_VERSION=$(node -e "console.log(require('./package.json').version)")
 PACKAGE_DESC=$(node -e "console.log(require('./package.json').description)")
 ZOWE_PLUGIN_ID="com.ibm.${PACKAGE_NAME}"
 
-cd $BASEDIR
-cd ..
-ROOT_DIR=$(pwd)
+cd "${ROOT_DIR}"
 
 # prepare pax workspace
 echo "[${SCRIPT_NAME}] cleaning PAX workspace ..."
 rm -fr "${PAX_WORKSPACE_DIR}/content"
 mkdir -p "${PAX_WORKSPACE_DIR}/content"
 
-cd "${ROOT_DIR}"
-
-# copy sample-trial-app to target folder
-echo "[${SCRIPT_NAME}] copying sample trial app & its source"
+# copy web sample-trial-app to target folder
+echo "[${SCRIPT_NAME}] copying sample trial app"
 mkdir -p "${PAX_WORKSPACE_DIR}/content/web"
-mkdir -p "${PAX_WORKSPACE_DIR}/content/webClient"
 cp -r web "${PAX_WORKSPACE_DIR}/content/web"
-cp -r webClient "${PAX_WORKSPACE_DIR}/content/webClient"
 cp  pluginDefinition.json "${PAX_WORKSPACE_DIR}/content"
+
+# copy source sample-trial-app to target folder
+echo "[${SCRIPT_NAME}] copying source to sample trial app"
+## remove node_modules to provide source only
+rm -rf webClient/node_modules
+mkdir -p "${PAX_WORKSPACE_DIR}/content/webClient"
+cp -r webClient "${PAX_WORKSPACE_DIR}/content/webClient"
 
 # move content to another folder
 rm -fr "${PAX_WORKSPACE_DIR}/ascii"

@@ -20,6 +20,7 @@ node('ibm-jenkins-slave-dind') {
 
   pipeline.setup(
     packageName: 'org.zowe.sample-trial-app',
+    baseDirectory: 'webClient',
     nodeJsVersion: 'v10.18.1',
     installRegistries: [
       [
@@ -31,19 +32,11 @@ node('ibm-jenkins-slave-dind') {
     publishRegistry: [
       email                      : lib.Constants.DEFAULT_LFJ_NPM_PRIVATE_REGISTRY_EMAIL,
       usernamePasswordCredential : lib.Constants.DEFAULT_LFJ_NPM_PRIVATE_REGISTRY_CREDENTIAL,
-    ]
+    ], 
+    disableLint: true,
   )
 
   pipeline.build()
-
-  // we need sonar scan
-  // failBuild set to false whilst investigating https://github.com/zowe/zlux/issues/285
-  pipeline.sonarScan(
-    scannerTool     : lib.Constants.DEFAULT_LFJ_SONARCLOUD_SCANNER_TOOL,
-    scannerServer   : lib.Constants.DEFAULT_LFJ_SONARCLOUD_SERVER,
-    allowBranchScan : lib.Constants.DEFAULT_LFJ_SONARCLOUD_ALLOW_BRANCH,
-    failBuild       : false
-  )
 
   // we have pax packaging step
   pipeline.packaging(name: 'sample-trial-app')
