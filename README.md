@@ -69,8 +69,7 @@ In our sample it is:
  EXTERNAL_COMPONENTS=</usr/lpp/extender>/sample-node-api/bin,</usr/lpp/extender>/sample-trial-app/bin      
 ```
 
-We expect following in service folder `start.sh`, `configure.sh` and `validate.sh`.
+We expect following in service folder `configure.sh`.
 In our case its bin folder with relevant scripts.    
     
-- `configure.sh` - It uses `install-app.sh` script to register app with ZLUX. Install script requires path to root directory containing `pluginDefinition.json` folder         
-- `start.sh` - It is added as its required by Zowe. Our app will be served directly by zlux-app-server. So, we don't need to start anything. 
+- `configure.sh` - It uses `install-app.sh` script to register app with ZLUX. Install script requires path to root directory containing `pluginDefinition.json` folder
