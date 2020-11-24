@@ -1,0 +1,17 @@
+name: sample-trial-app
+id: org.zowe.sample-trial-app
+title: Sample Trial App
+description: A sample application for Zowe
+license: EPL-2.0
+repository:
+  type: git
+  url: https://github.com/zowe/sample-trial-app.git
+build:
+  branch: "{{build.branch}}"
+  number: "{{build.number}}"
+  commitHash: "{{build.commitHash}}"
+  timestamp: "{{build.timestamp}}"
+commands:
+  configure: bin/configure.sh
+desktopPlugin:
+  - path: .
