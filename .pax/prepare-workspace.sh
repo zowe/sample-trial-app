@@ -40,6 +40,9 @@ mkdir -p "${PAX_WORKSPACE_DIR}/content/web"
 cp -r web "${PAX_WORKSPACE_DIR}/content"
 cp -r bin "${PAX_WORKSPACE_DIR}/content"
 cp  pluginDefinition.json "${PAX_WORKSPACE_DIR}/content"
+cp  manifest.yaml "${PAX_WORKSPACE_DIR}/content"
+cp  README.md "${PAX_WORKSPACE_DIR}/content"
+cp  LICENSE "${PAX_WORKSPACE_DIR}/content"
 
 # copy source sample-trial-app to target folder
 echo "[${SCRIPT_NAME}] copying source to sample trial app"
