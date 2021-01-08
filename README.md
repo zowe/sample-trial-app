@@ -46,7 +46,7 @@ ssh ibmuser@my.mainframe.com
 
 ### 2) install component using zowe-install-component.sh script
 ```
-./<zowe-runtime-dir>/bin/zowe-install-component.sh -c <component-name> -i <zowe-instance-dir> -o <component-pax-file> -l <log-folder>
+./<zowe-runtime-dir>/bin/zowe-install-component.sh -d <zowe-extensions-dir> -i <zowe-instance-dir> -o <component-pax-file> -l <log-folder>
 
 ```
 
