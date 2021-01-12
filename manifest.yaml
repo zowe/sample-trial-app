@@ -13,5 +13,5 @@ build:
   timestamp: "{{build.timestamp}}"
 commands:
   configure: bin/configure.sh
-desktopPlugins:
+appfwPlugins:
   - path: .
