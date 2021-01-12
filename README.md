@@ -60,3 +60,12 @@ ssh ibmuser@my.mainframe.com
 
 This app uses dataservice api as which can be deployed and started separately:
 `https://github.com/zowe/sample-node-api`
+
+## Verify Sample Trial App has been installed
+### Menu Bar
+Once installed, you should be able to see the Sample Trial App icon and selection on the menu bar in the Zowe Desktop.
+![Sample-Trial-App-Menu](/screenshots/Sample-Trial-App_Menu-Bar.png?raw=true "Sample-Trial-App_Menu-Bar")
+
+### Main Application
+When clicking the Sample Trial App selection, it will open up the Sample Trial Application and bring you to the home screen.
+![Sample-Trial-App-Screenshot](/screenshots/Sample-Trial-App_Home-Screen.png?raw=true "Sample-Trial-App_Home-Screen")
