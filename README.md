@@ -13,6 +13,7 @@
    ```
 
 2) Ensure sample-trial-app is empty and exists in remote host (skip this step if you've already fulfilled the requirements)
+
    Login
    ```
    ssh ibmuser@my.mainframe.com
