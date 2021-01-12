@@ -12,12 +12,25 @@
     npm run build
    ```
 
-2) Transfer app to server  
-   Transfer `web` folder and `pluginDefinition.json`
+2) Ensure sample-trial-app is empty and exists in remote host (skip this step if you've already fulfilled the requirements)
+   Login
    ```
-   cd ../
-   scp -r web ibmuser@my.mainframe.com:</usr/lpp/extender>/sample-trial-app
-   scp -r pluginDefinition.json ibmuser@my.mainframe.com:</usr/lpp/extender>/sample-trial-app
+   ssh ibmuser@my.mainframe.com
+   ```
+
+   If sample-trial-app does not exist in remote host create an empty directory.
+   ```
+   mkdir <user-defined-folder>/sample-trial-app
+   ```
+
+3) Transfer app to server  
+   Transfer `web`, `manifest.yaml` and `pluginDefinition.json` from your local to remote host.
+   ```
+   // on your local
+   cd sample-trial-app
+   scp -r web ibmuser@my.mainframe.com:<user-defined-folder>/sample-trial-app
+   scp -r manifest.yaml ibmuser@my.mainframe.com:<user-defined-folder>/sample-trial-app
+   scp -r pluginDefinition.json ibmuser@my.mainframe.com:<user-defined-folder>/sample-trial-app
    ```
 ## Method 2: From Artifactory
 ### 1) Download latest pax from artifactory
