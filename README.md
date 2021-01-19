@@ -7,69 +7,65 @@
    Build `web` folder
    ```
     git clone https://github.com/zowe/sample-trial-app.git
-    cd webClient
+    cd sample-trial-app/webClient
     npm install
     npm run build
    ```
 
-2) Transfer app to server  
-   Transfer `web` folder and `pluginDefinition.json`
+2) Ensure sample-trial-app is empty and exists in remote host (skip this step if you've already fulfilled the requirements)
+
+   Login
    ```
+   ssh ibmuser@my.mainframe.com
+   ```
+
+   If sample-trial-app does not exist in remote host create an empty directory.
+   ```
+   mkdir <user-defined-folder>/sample-trial-app
+   ```
+
+3) Transfer app to server  
+   Transfer `web`, `manifest.yaml` and `pluginDefinition.json` from your local to remote host.
+   ```
+   // on your local
    cd sample-trial-app
-   scp -r web ibmuser@my.mainframe.com:</usr/lpp/extender>/sample-trial-app
-   scp -r pluginDefinition.json ibmuser@my.mainframe.com:</usr/lpp/extender>/sample-trial-app
+   scp -r web ibmuser@my.mainframe.com:<user-defined-folder>/sample-trial-app
+   scp -r manifest.yaml ibmuser@my.mainframe.com:<user-defined-folder>/sample-trial-app
+   scp -r pluginDefinition.json ibmuser@my.mainframe.com:<user-defined-folder>/sample-trial-app
    ```
 ## Method 2: From Artifactory
 ### 1) Download latest pax from artifactory
-Get latest package from [artifactory](https://zowe.jfrog.io/zowe/webapp/#/artifacts/browse/tree/General/libs-snapshot-local/org/zowe/sample-trial-app/0.1.0-SNAPSHOT)
+Get latest package from [artifactory](https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/sample-trial-app/)
 
-Copy latest pax url and use curl to download:
-```
-# on local or directly on z/OS
-curl -O https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/sample-trial-app/0.1.0-SNAPSHOT/sample-trial-app-0.1.0-snapshot-1-20200909205759.pax
-```
+Choose the latest pax build provided from the link above and download it into your local storage.
 
 ### 2) Transfer and unpax on z/OS
 ```
-# From local - if downloaded on z/OS skip this
 sftp ibmuser@mymainframe.ibm.com
 put <pax-name>.pax
-
-# On z/OS
-mkdir sample-node-api
-cd sample-node-api
-pax -ppx -rf ../<pax-name>.pax
 ```
 
 
 ## PART II: Deploy with Zowe on server
 
-## Method 1: Manually
-1) `ssh ibmuser@my.mainframe.com`
+### 1) login
+```  
+ssh ibmuser@my.mainframe.com       
+```
 
-2) Go to your sample trial app folder
-    Install as zowe desktop app   
-    ```
-    cd ~/zowe/instance/bin
-    install-app.sh </usr/lpp/extender>/sample-trial-app/
-    ```
-    
-3) This app uses dataservice api as which can be deployed and started separately:
+### 2) install component using zowe-install-component.sh script
+```
+./<zowe-runtime-dir>/bin/zowe-install-component.sh -d <zowe-extensions-dir> -i <zowe-instance-dir> -o <component-pax-file> -l <log-folder>
+```
+
+This app uses dataservice api as which can be deployed and started separately:
 `https://github.com/zowe/sample-node-api`
 
-## Method 2: Using Zowe Lifecycle scripts
-### 1) Register as EXTERNAL_COMPONENTS with zowe
+## Verify Sample Trial App has been installed
+### Menu Bar
+Once installed, you should be able to see the Sample Trial App icon and selection on the menu bar in the Zowe Desktop.
+![Sample-Trial-App-Menu](/screenshots/Sample-Trial-App_Menu-Bar.png?raw=true "Sample-Trial-App_Menu-Bar")
 
-Use property `EXTERNAL_COMPONENTS` located in file `$INSTANCE_DIR/instance.env`       
-Append it (comma separated) with the directory containing your service lifecycle scripts.
-
-In our sample it is:   
-```
- vi INSTANCE_DIR/instance.env   
- EXTERNAL_COMPONENTS=</usr/lpp/extender>/sample-node-api/bin,</usr/lpp/extender>/sample-trial-app/bin      
-```
-
-We expect following in service folder `configure.sh`.
-In our case its bin folder with relevant scripts.    
-    
-- `configure.sh` - It uses `install-app.sh` script to register app with ZLUX. Install script requires path to root directory containing `pluginDefinition.json` folder
+### Main Application
+When clicking the Sample Trial App selection, it will open up the Sample Trial Application and bring you to the home screen.
+![Sample-Trial-App-Screenshot](/screenshots/Sample-Trial-App_Home-Screen.png?raw=true "Sample-Trial-App_Home-Screen")
