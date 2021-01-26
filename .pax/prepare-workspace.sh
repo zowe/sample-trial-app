@@ -34,6 +34,17 @@ echo "[${SCRIPT_NAME}] cleaning PAX workspace ..."
 rm -fr "${PAX_WORKSPACE_DIR}/content"
 mkdir -p "${PAX_WORKSPACE_DIR}/content"
 
+# build client
+if [ ! -d "web" ] || [ -z "$(ls -1 web/static/js/main*.chunk.js)" ]; then
+  echo "[${SCRIPT_NAME}] building client ..."
+  cd webClient
+  if [ ! -d "node_modules" ]; then
+     npm install
+  fi
+  npm run build
+  cd ..
+fi
+
 # copy web sample-trial-app to target folder
 echo "[${SCRIPT_NAME}] copying sample trial app"
 mkdir -p "${PAX_WORKSPACE_DIR}/content/web"
@@ -76,4 +87,22 @@ rsync -rv \
   "${PAX_WORKSPACE_DIR}/ascii"
 
 echo "[${SCRIPT_NAME}] ${PAX_WORKSPACE_DIR} folder is prepared."
+
+echo "[${SCRIPT_NAME}] ${PAX_WORKSPACE_DIR} prepare local-build and *.tar.gz"
+
+cd "${PAX_WORKSPACE_DIR}"
+# remove folder for local build & tar
+rm -fr "sample-trial-app"
+rm -f "sample-trial-app.tar.gz"
+
+cp -r "ascii" "sample-trial-app"
+
+rsync -rv \
+  --include '*.png' \
+  "content/" \
+  "sample-trial-app"
+
+tar -zcvf "sample-trial-app.tar.gz" "sample-trial-app"
+echo "[${SCRIPT_NAME}] ${PAX_WORKSPACE_DIR} local-build and *.tar.gz is generated"
+
 exit 0

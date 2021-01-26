@@ -1,0 +1,20 @@
+FROM ompzowe/server-bundle:amd64
+ARG RUNTIME_DIR=/root/zowe/install
+ARG INSTANCE_DIR=/root/zowe/instance
+ARG LOGS_DIR=/root/zowe/instance/logs
+ARG APPS_DIR=/root/zowe/apps
+
+ENV ZWE_EXTENSION_DIR="${APPS_DIR}"
+ENV EXTERNAL_COMPONENTS="${APPS_DIR}/sample-node-api/bin"
+
+ADD ./gz/sample-node-api.tar.gz "${APPS_DIR}"
+ADD ./gz/sample-trial-app.tar.gz "${APPS_DIR}"
+
+RUN "${RUNTIME_DIR}/bin/zowe-configure-component.sh"  -c sample-trial-app -i "${INSTANCE_DIR}"
+# RUN "${RUNTIME_DIR}/bin/zowe-configure-component.sh"  -c sample-node-api -i "${INSTANCE_DIR}"
+
+
+# try following
+# docker load < server-bundle.amd64-1.19.0-RC2.tar
+# docker build -f Dockerfiles.extend -t myorg/zowe:sample-app .
+# docker run --rm --env ZOWE_EXPLORER_HOST=zowe-docker.com --env ZOWE_IP_ADDRESS=0.0.0.0 --env ZOSMF_HOST=tvt5003.svl.ibm.com --env ZOSMF_PORT=443 --env ZWED_agent_host=tvt5003.svl.ibm.com --env ZWED_agent_http_port=48542 -p 7554:7554 -p 8544:8544 -p 7553:7553 myorg/zowe:sample-app 
