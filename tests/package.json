@@ -1,0 +1,23 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "debug": "^4.2.0",
+    "fs": "0.0.1-security",
+    "geckodriver": "^1.20.0",
+    "lodash": "^4.17.20",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1",
+    "path": "^0.12.7",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  }
+}
