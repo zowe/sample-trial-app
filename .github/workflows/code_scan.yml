@@ -20,9 +20,11 @@ jobs:
 
       - name: Install
         run: npm install --no-audit
+        working-directory: webClient
 
       - name: Audit
         run: npm audit --prod
+        working-directory: webClient
 
   run-code-ql:
     runs-on: macos-latest
