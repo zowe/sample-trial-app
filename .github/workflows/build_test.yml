@@ -76,6 +76,7 @@ jobs:
 
       - name: '[Build] Nodejs project build'
         run: npm run build
+        working-directory: webClient
 
       - name: '[Packaging] Make pax'
         uses: zowe-actions/shared-actions/make-pax@main
