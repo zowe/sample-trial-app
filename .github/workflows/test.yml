@@ -18,7 +18,9 @@ jobs:
         uses: zowe-actions/shared-actions/publish@test
         with:
           artifacts: |
-            jenkinsfile
+            Jenkinsfile
             LICENSE
+            README.md
+            webClient/package.json
           publish-target-path-pattern: 'libs-snapshot-local/com/tom/test/'
           publish-target-file-pattern: '{filename}{fileext}'
