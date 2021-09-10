@@ -1,0 +1,25 @@
+name: Build and Test Workflow
+on:
+  push
+  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: '[Prep 1] Checkout'
+        uses: actions/checkout@v2
+
+      - name: '[Prep 3] Setup jFrog CLI'
+        uses: jfrog/setup-jfrog-cli@v1
+        env:
+          JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_TOKEN }}
+
+      - name: '[Publish] Publish'
+        uses: zowe-actions/shared-actions/publish@test
+        with:
+          artifacts: |
+            jenkinsfile
+            LICENSE
+          publish-target-path-pattern: 'libs-snapshot-local/com/tom/test/'
+          publish-target-file-pattern: '{filename}{fileext}'
