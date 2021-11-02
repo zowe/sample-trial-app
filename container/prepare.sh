@@ -75,17 +75,16 @@ mkdir -p "${BASE_DIR}/${WORK_DIR}"
 
 ###############################
 echo ">>>>> build sample-trial-app webClient"
-# TODO
-
-
-
-
-
+cd "${REPO_ROOT_DIR}/webClient"
+npm install
+npm run build
 
 # copy web to container workspace
 mkdir -p "${BASE_DIR}/${WORK_DIR}/web"
+cd ${REPO_ROOT_DIR}
 cp -r web "${BASE_DIR}/${WORK_DIR}"
 
+# copy additional files to container workspace
 cp README.md "${BASE_DIR}/${WORK_DIR}"
 cp LICENSE "${BASE_DIR}/${WORK_DIR}"
 cp pluginDefinition.json "${BASE_DIR}/${WORK_DIR}"
