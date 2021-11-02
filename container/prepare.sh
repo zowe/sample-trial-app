@@ -74,7 +74,7 @@ rm -fr "${BASE_DIR}/${WORK_DIR}"
 mkdir -p "${BASE_DIR}/${WORK_DIR}"
 
 ###############################
-echo ">>>>> build explorer-ip webClient"
+echo ">>>>> build sample-trial-app webClient"
 # TODO
 
 
