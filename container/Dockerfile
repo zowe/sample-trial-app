@@ -22,7 +22,7 @@ LABEL name="Sample Trial App" \
       version="0.0.0" \
       release="0" \
       summary="IBM sample app" \ 
-      description="Zowe Desktop application connect to the sample app"
+      description="The sample trial app for Zowe Desktop application"
 
 ##################################
 # switch context
