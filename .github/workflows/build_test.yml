@@ -10,6 +10,8 @@ on:
       PERFORM_RELEASE:
         description: '[Release] perform release'
         required: false
+        default: 'false'
+        type: boolean
   
 
 jobs:
@@ -20,14 +22,20 @@ jobs:
       - name: check permission
         uses: zowe-actions/shared-actions/permission-check@main
         with:
-          user: ${{ github.actor }}
-          github-repo: ${{ github.repository }}
-          github-user: ${{ secrets.ZOWE_ROBOT_USER }}
-          github-passwd: ${{ secrets.ZOWE_ROBOT_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  validate-package-json:
+    needs: check-permission
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Validate package.json
+        uses: zowe-actions/shared-actions/validate-package-json@main
 
   build-test:
     runs-on: ubuntu-latest
-    needs: check-permission
+    needs: validate-package-json
     steps: 
       - name: '[Prep 1] Checkout'
         uses: actions/checkout@v2
@@ -51,10 +59,6 @@ jobs:
           
       - name: '[Prep 4] Prepare workflow'
         uses: zowe-actions/shared-actions/prepare-workflow@main
-        with:
-          github-user: ${{ secrets.ZOWE_ROBOT_USER }}
-          github-password: ${{ secrets.ZOWE_ROBOT_TOKEN }}
-          github-email: ${{ secrets.ZOWE_ROBOT_EMAIL }}
           
       - name: '[Prep 5] Setup Node'
         uses: actions/setup-node@v2
@@ -76,7 +80,7 @@ jobs:
         with:
           pax-name: 'sample-trial-app'
           pax-ssh-username: ${{ secrets.SSH_MARIST_USERNAME }}
-          pax-ssh-password: ${{ secrets.SSH_MARIST_PASSWORD }}
+          pax-ssh-password: ${{ secrets.SSH_MARIST_RACF_PASSWORD }}
 
       - name: '[Publish] Publish'
         uses: zowe-actions/shared-actions/publish@main
@@ -93,3 +97,7 @@ jobs:
       # - name: '[Release 2] NPM bump version (if necessary)' 
       #   if: ${{ success() && github.event.inputs.PERFORM_RELEASE == 'true' && env.IS_RELEASE_BRANCH == 'true' && env.IS_FORMAL_RELEASE_BRANCH == 'true' && env.PRE_RELEASE_STRING == ''}}
       #   uses: zowe-actions/nodejs-actions/bump-version@main
+      #   with:
+      #     base-directory: 'webClient'
+      #   env: 
+      #     GITHUB_TOKEN: ${{ secrets.ZOWE_ROBOT_TOKEN }}
